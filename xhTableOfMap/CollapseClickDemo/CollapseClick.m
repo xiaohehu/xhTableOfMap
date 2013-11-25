@@ -10,10 +10,13 @@
 
 @implementation CollapseClick
 @synthesize CollapseClickDelegate;
+@synthesize arr_indexArray;
+@synthesize originalFrameSize;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
+    self.originalFrameSize = frame.size;
     if (self) {
         // Initialization code
         self.isClickedArray = [[NSMutableArray alloc] initWithCapacity:[CollapseClickDelegate numberOfCellsForCollapseClick]];
@@ -61,10 +64,13 @@
         self.dataArray = [[NSMutableArray alloc] initWithCapacity:[CollapseClickDelegate numberOfCellsForCollapseClick]];
     }
     
+    if (!(self.arr_indexArray)) {
+        self.arr_indexArray = [[NSMutableArray alloc] initWithCapacity:[CollapseClickDelegate numberOfCellsForCollapseClick]];
+    }
     // Make sure they are clear
     [self.isClickedArray removeAllObjects];
     [self.dataArray removeAllObjects];
-    
+    [self.arr_indexArray removeAllObjects];
     // Remove all subviews
     for (UIView *subview in self.subviews) {
         [subview removeFromSuperview];
@@ -74,7 +80,8 @@
     for (int xx = 0; xx < [CollapseClickDelegate numberOfCellsForCollapseClick]; xx++) {
         // Create Cell
         CollapseClickCell *cell = [CollapseClickCell newCollapseClickCellWithTitle:[CollapseClickDelegate titleForCollapseClickAtIndex:xx] index:xx content:[CollapseClickDelegate viewForCollapseClickContentViewAtIndex:xx]];
-        
+        NSNumber* theNum = [NSNumber numberWithInt:xx];
+        [arr_indexArray addObject:theNum];
         
         // Set cell.TitleView's backgroundColor
         if ([(id)CollapseClickDelegate respondsToSelector:@selector(colorForCollapseClickTitleViewAtIndex:)]) {
@@ -111,6 +118,7 @@
         
         // Add target to Button
         [cell.TitleButton addTarget:self action:@selector(didSelectCollapseClickButton:) forControlEvents:UIControlEventTouchUpInside];
+        cell.TitleButton.tag = xx;
         
         // Add cell
         [self addSubview:cell];
@@ -145,24 +153,66 @@
 
 #pragma mark - Did Click
 -(void)didSelectCollapseClickButton:(UIButton *)titleButton {
-    BOOL isOpen = NO;
-    
+   BOOL isOpen = NO;
+//        BOOL isOpen = NO;
+//        // Cell is OPEN -> CLOSED
+//        if ([[self.isClickedArray objectAtIndex:titleButton.tag] boolValue] == YES) {
+//            [self closeCollapseClickCellAtIndex:(int)titleButton.tag animated:YES];
+//        }
+//        // Cell is CLOSED -> OPEN
+//        else {
+//            [self openCollapseClickCellAtIndex:(int)titleButton.tag animated:YES];
+//            isOpen = YES;
+//        }
+//        
+//        // Call delegate method
+//        if ([(id)CollapseClickDelegate respondsToSelector:@selector(didClickCollapseClickCellAtIndex:isNowOpen:)]) {
+//            [CollapseClickDelegate didClickCollapseClickCellAtIndex:(int)titleButton.tag isNowOpen:isOpen];
+//        }
+//    });
+    [self closeCellResize:(int)titleButton.tag];
     // Cell is OPEN -> CLOSED
     if ([[self.isClickedArray objectAtIndex:titleButton.tag] boolValue] == YES) {
-        [self closeCollapseClickCellAtIndex:titleButton.tag animated:YES];
+        [self closeCollapseClickCellAtIndex:(int)titleButton.tag animated:YES];
+        [self closeCellResize:(int)titleButton.tag];
     }
     // Cell is CLOSED -> OPEN
     else {
-        [self openCollapseClickCellAtIndex:titleButton.tag animated:YES];
+        [self closeCollapseClickCellsWithIndexes:arr_indexArray animated:YES];
+        double delayInSeconds4 = 0.33f;
+        dispatch_time_t popTime4 = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds4 * NSEC_PER_SEC);
+        dispatch_after(popTime4, dispatch_get_main_queue(), ^(void){
+        [self openCollapseClickCellAtIndex:(int)titleButton.tag animated:YES];
+        [self openCellResize:(int)titleButton.tag];
+        });
         isOpen = YES;
     }
     
     // Call delegate method
     if ([(id)CollapseClickDelegate respondsToSelector:@selector(didClickCollapseClickCellAtIndex:isNowOpen:)]) {
-        [CollapseClickDelegate didClickCollapseClickCellAtIndex:titleButton.tag isNowOpen:isOpen];
+        [CollapseClickDelegate didClickCollapseClickCellAtIndex:(int)titleButton.tag isNowOpen:isOpen];
     }
 }
+#pragma mark - Resize Self's Frame
+-(void)openCellResize:(int)index
+{
+    CollapseClickCell *cell = [self.dataArray objectAtIndex:index];
+    CGSize newSize = CGSizeZero;
+    newSize.width = self.frame.size.width;
+    newSize.height = self.frame.size.height + cell.ContentView.frame.size.height+kCCHeaderHeight;
+    [UIView animateWithDuration:0.25 animations:^{
+    self.superview.frame = CGRectMake(self.frame.origin.x, (768-newSize.height)/2, newSize.width, newSize.height);
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, newSize.height - kCCHeaderHeight);
+    }];
+}
 
+-(void)closeCellResize:(int)index
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        self.superview.frame = CGRectMake(self.frame.origin.x, (768-originalFrameSize.height-kCCHeaderHeight)/2, self.originalFrameSize.width, self.originalFrameSize.height+kCCHeaderHeight);
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.originalFrameSize.width, self.originalFrameSize.height);
+    }];
+}
 #pragma mark - Open CollapseClickCell
 -(void)openCollapseClickCellAtIndex:(int)index animated:(BOOL)animated {
     // Check if it's not open first

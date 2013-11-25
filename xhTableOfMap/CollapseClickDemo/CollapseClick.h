@@ -44,7 +44,8 @@
 // Properties
 @property (nonatomic, retain) NSMutableArray *isClickedArray;
 @property (nonatomic, retain) NSMutableArray *dataArray;
-
+@property (nonatomic, retain) NSMutableArray *arr_indexArray;
+@property (nonatomic)         CGSize         originalFrameSize;
 // Methods
 -(void)reloadCollapseClick;
 -(CollapseClickCell *)collapseClickCellForIndex:(int)index;

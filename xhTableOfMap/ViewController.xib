@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
             <connections>
-                <outlet property="theCollapseClick" destination="t44-gm-T3O" id="DM4-Kz-n0U"/>
                 <outlet property="uiv_tableDining" destination="AjP-0n-2bc" id="u6z-4c-aLr"/>
                 <outlet property="uiv_tableFitness" destination="HPs-VL-8lB" id="IQb-8T-BtQ"/>
                 <outlet property="uiv_tableHotels" destination="Ibu-iy-lZI" id="fV6-eP-7yA"/>
@@ -19,7 +18,7 @@
             <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t44-gm-T3O" customClass="CollapseClick">
+                <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t44-gm-T3O" customClass="CollapseClick">
                     <rect key="frame" x="0.0" y="150" width="200" height="500"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>

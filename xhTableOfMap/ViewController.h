@@ -12,7 +12,7 @@
 #import "hotelTableViewController.h"
 #import "diningTableViewController.h"
 
-@interface ViewController : UIViewController <CollapseClickDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface ViewController : UIViewController <CollapseClickDelegate, UITextFieldDelegate>//, UITableViewDataSource, UITableViewDelegate>
 {
     IBOutlet UIView *uiv_tableHotels;
     
@@ -20,7 +20,9 @@
     
     IBOutlet UIView *uiv_tableFitness;
     
-    __weak IBOutlet CollapseClick * theCollapseClick;
+//    __weak IBOutlet CollapseClick * theCollapseClick;
+    
+    CollapseClick *theCollapseClick;
 }
 
 @end
