@@ -25,6 +25,7 @@
 -(UIColor *)colorForTitleLabelAtIndex:(int)index;
 -(UIColor *)colorForTitleArrowAtIndex:(int)index;
 -(void)didClickCollapseClickCellAtIndex:(int)index isNowOpen:(BOOL)open;
+-(void)closeCollapseClickCellsWithIndexes:(NSArray *)indexArray animated:(BOOL)animated;
 
 @end
 

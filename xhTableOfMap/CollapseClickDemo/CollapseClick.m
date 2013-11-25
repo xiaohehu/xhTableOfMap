@@ -238,7 +238,7 @@
             
             // Change Cell's BG color
             [cell setBackgroundColor:[UIColor blackColor]];
-            cell.alpha = 0.35;
+            cell.TitleLabel.alpha = 0.35;
         }];
     }
 }
@@ -281,7 +281,7 @@
             
             //Change Cell's BG color
             cell.BackgroundColor=[UIColor colorWithWhite:0.4 alpha:1.0];
-            cell.alpha = 1.0;
+            cell.TitleLabel.alpha = 1.0;
         }];
     }
 }
