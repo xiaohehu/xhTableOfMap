@@ -31,6 +31,7 @@ static int numOfCells = 3;
 	// Do any additional setup after loading the view, typically from a nib.
     [self citySectionData];
     [self initVC];
+    [self.view addSubview:_uiv_collapseContainer];
 }
 
 -(void)initVC
@@ -82,7 +83,6 @@ static int numOfCells = 3;
     [_uiv_collapseContainer addSubview:theCollapseClick];
     [_uiv_collapseContainer addSubview:uiv_darkBar];
     [_uiv_collapseContainer addSubview:uiv_lightBar];
-    [self.view addSubview:_uiv_collapseContainer];
 }
 
 - (void)didReceiveMemoryWarning
@@ -121,24 +121,20 @@ static int numOfCells = 3;
 #pragma mark - Init Data For 2 Sections
 -(void)citySectionData
 {
+    [_uiv_collapseContainer removeFromSuperview];
     _arr_cellName = [[NSMutableArray alloc] initWithObjects:@"DRIVING DIRECTION", @"PARKING", @"PUBLIC TRANSIT", nil];
-
-    theCollapseClick.CollapseClickDelegate = self;
-    [theCollapseClick reloadCollapseClick];
-    [theCollapseClick closeCollapseClickCellAtIndex:_arr_cellName animated:YES];
-    _uiv_collapseContainer.frame = CGRectMake(0.0f, (768-kCCHeaderHeight*(numOfCells+1))/2, 200, kCCHeaderHeight*(numOfCells+1));
-    [_uiv_collapseContainer setBackgroundColor:[UIColor blueColor]];
+    [self initVC];
+    [self.view addSubview:_uiv_collapseContainer];
+//    [theCollapseClick closeCollapseClickCellAtIndex:_arr_cellName animated:YES];
 }
 
 -(void)neighborhoodSectionData
 {
+    [_uiv_collapseContainer removeFromSuperview];
     _arr_cellName = [[NSMutableArray alloc] initWithObjects:@"HOTEL",@"DINING",@"FITNESS", nil];
-
-    theCollapseClick.CollapseClickDelegate = self;
-    [theCollapseClick reloadCollapseClick];
-    [theCollapseClick closeCollapseClickCellAtIndex:_arr_cellName animated:YES];
-    _uiv_collapseContainer.frame = CGRectMake(0.0f, (768-kCCHeaderHeight*(numOfCells+1))/2, 200, kCCHeaderHeight*(numOfCells+1));
-    [_uiv_collapseContainer setBackgroundColor:[UIColor redColor]];
+    [self initVC];
+    [self.view addSubview:_uiv_collapseContainer];
+//    [theCollapseClick closeCollapseClickCellAtIndex:_arr_cellName animated:YES];
 }
 #pragma mark - Collapse Click Delegate
 
