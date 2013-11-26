@@ -33,6 +33,10 @@
 		82092A34183FFD03003080C4 /* diningTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82092A32183FFD03003080C4 /* diningTableViewController.m */; };
 		82092A35183FFD03003080C4 /* diningTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82092A33183FFD03003080C4 /* diningTableViewController.xib */; };
 		82220C401840111400B5E66E /* hotspotLis.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82220C3F1840111400B5E66E /* hotspotLis.plist */; };
+		826CEBD518451E95009D7101 /* map_menu_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 826CEBD318451E95009D7101 /* map_menu_close.png */; };
+		826CEBD618451E95009D7101 /* map_menu_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 826CEBD418451E95009D7101 /* map_menu_close@2x.png */; };
+		826CEBDD1845367E009D7101 /* publicT.png in Resources */ = {isa = PBXBuildFile; fileRef = 826CEBDB1845367E009D7101 /* publicT.png */; };
+		826CEBDE1845367E009D7101 /* publicT@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 826CEBDC1845367E009D7101 /* publicT@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +87,10 @@
 		82092A32183FFD03003080C4 /* diningTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = diningTableViewController.m; sourceTree = "<group>"; };
 		82092A33183FFD03003080C4 /* diningTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = diningTableViewController.xib; sourceTree = "<group>"; };
 		82220C3F1840111400B5E66E /* hotspotLis.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hotspotLis.plist; sourceTree = "<group>"; };
+		826CEBD318451E95009D7101 /* map_menu_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_menu_close.png; sourceTree = "<group>"; };
+		826CEBD418451E95009D7101 /* map_menu_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_menu_close@2x.png"; sourceTree = "<group>"; };
+		826CEBDB1845367E009D7101 /* publicT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = publicT.png; sourceTree = "<group>"; };
+		826CEBDC1845367E009D7101 /* publicT@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "publicT@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +166,10 @@
 				82092A33183FFD03003080C4 /* diningTableViewController.xib */,
 				82092A2A183FDAFE003080C4 /* hotspotList.plist */,
 				82220C3F1840111400B5E66E /* hotspotLis.plist */,
+				826CEBD318451E95009D7101 /* map_menu_close.png */,
+				826CEBD418451E95009D7101 /* map_menu_close@2x.png */,
+				826CEBDB1845367E009D7101 /* publicT.png */,
+				826CEBDC1845367E009D7101 /* publicT@2x.png */,
 				820929EE183F9F1D003080C4 /* Images.xcassets */,
 				82092A19183FB300003080C4 /* CollapseClickDemo */,
 				820929DD183F9F1D003080C4 /* Supporting Files */,
@@ -284,12 +296,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				826CEBD518451E95009D7101 /* map_menu_close.png in Resources */,
+				826CEBDD1845367E009D7101 /* publicT.png in Resources */,
 				82092A30183FFCEF003080C4 /* hotelTableViewController.xib in Resources */,
 				820929EF183F9F1D003080C4 /* Images.xcassets in Resources */,
 				82092A0C183FA419003080C4 /* ViewController.xib in Resources */,
 				820929E1183F9F1D003080C4 /* InfoPlist.strings in Resources */,
 				82092A29183FD83B003080C4 /* hotspotTableViewController.xib in Resources */,
+				826CEBD618451E95009D7101 /* map_menu_close@2x.png in Resources */,
 				82092A2B183FDAFE003080C4 /* hotspotList.plist in Resources */,
+				826CEBDE1845367E009D7101 /* publicT@2x.png in Resources */,
 				82220C401840111400B5E66E /* hotspotLis.plist in Resources */,
 				82092A35183FFD03003080C4 /* diningTableViewController.xib in Resources */,
 				82092A24183FB300003080C4 /* CollapseClickCell.xib in Resources */,

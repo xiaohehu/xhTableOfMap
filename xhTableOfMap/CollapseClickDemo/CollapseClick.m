@@ -170,11 +170,11 @@
 //            [CollapseClickDelegate didClickCollapseClickCellAtIndex:(int)titleButton.tag isNowOpen:isOpen];
 //        }
 //    });
-    [self closeCellResize:(int)titleButton.tag];
+    [self closeCellResize];
     // Cell is OPEN -> CLOSED
     if ([[self.isClickedArray objectAtIndex:titleButton.tag] boolValue] == YES) {
         [self closeCollapseClickCellAtIndex:(int)titleButton.tag animated:YES];
-        [self closeCellResize:(int)titleButton.tag];
+        [self closeCellResize];
     }
     // Cell is CLOSED -> OPEN
     else {
@@ -206,7 +206,7 @@
     }];
 }
 
--(void)closeCellResize:(int)index
+-(void)closeCellResize
 {
     [UIView animateWithDuration:0.25 animations:^{
         self.superview.frame = CGRectMake(self.frame.origin.x, (768-originalFrameSize.height-kCCHeaderHeight)/2, self.originalFrameSize.width, self.originalFrameSize.height+kCCHeaderHeight);

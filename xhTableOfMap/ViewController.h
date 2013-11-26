@@ -22,7 +22,9 @@
     
 //    __weak IBOutlet CollapseClick * theCollapseClick;
     
-    CollapseClick *theCollapseClick;
+    CollapseClick   *theCollapseClick;
+    
+    BOOL            isCity;
 }
 
 @end

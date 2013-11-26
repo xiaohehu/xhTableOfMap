@@ -70,6 +70,7 @@
     // Configure the cell...
     NSString *str_cellText = [_arr_tableData objectAtIndex:indexPath.row];
     cell.textLabel.text = str_cellText;
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:14.0];
     return cell;
 }
 

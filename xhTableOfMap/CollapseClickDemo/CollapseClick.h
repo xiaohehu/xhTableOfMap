@@ -56,5 +56,6 @@
 -(void)closeCollapseClickCellAtIndex:(int)index animated:(BOOL)animated;
 -(void)openCollapseClickCellsWithIndexes:(NSArray *)indexArray animated:(BOOL)animated;
 -(void)closeCollapseClickCellsWithIndexes:(NSArray *)indexArray animated:(BOOL)animated;
+-(void)closeCellResize;
 
 @end

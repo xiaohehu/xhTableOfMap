@@ -28,9 +28,14 @@
     cell.TitleLabel.text = title;
     cell.index = index;
     cell.TitleButton.tag = index;
-    cell.ContentView.frame = CGRectMake(cell.ContentView.frame.origin.x, cell.ContentView.frame.origin.y, cell.ContentView.frame.size.width, content.frame.size.height);
-    [cell.ContentView addSubview:content];
+    cell.ContentView.frame = CGRectMake(cell.ContentView.frame.origin.x+10, cell.ContentView.frame.origin.y, cell.ContentView.frame.size.width, content.frame.size.height);
     
+//    cell.ContentView.clipsToBounds = YES;
+//    [cell.ContentView setClipsToBounds:YES];
+//    [cell.ContentView setContentMode:UIViewContentModeLeft];
+//    [cell.ContentView setBackgroundColor:[UIColor redColor]];
+    
+    [cell.ContentView addSubview:content];
     return cell;
 }
 
