@@ -29,6 +29,10 @@ static float container_W = 160.0;
 
 @implementation ViewController
 
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
