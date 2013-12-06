@@ -9,17 +9,23 @@
 #import "ViewController.h"
 
 static int numOfCells = 3;
-static float container_W = 160.0;
+static float container_W = 200.0;
 
 @interface ViewController ()
 @property (nonatomic, strong) hotspotTableViewController    *fitnessTableView;
 @property (nonatomic, strong) hotelTableViewController      *hotelTableView;
 @property (nonatomic, strong) diningTableViewController     *diningTableView;
 @property (nonatomic, strong) CollapseClickCell             *theCell;
+
 @property (nonatomic, strong) UIView                        *uiv_collapseContainer;
+@property (nonatomic, strong) UIView                        *uiv_closedMenuContainer;
+
 @property (nonatomic, strong) UIButton                      *uib_city;
 @property (nonatomic, strong) UIButton                      *uib_neighborhood;
 @property (nonatomic, strong) UIButton                      *uib_closeBtn;
+@property (nonatomic, strong) UIButton                      *uib_openBtn;
+
+@property (nonatomic, strong) UILabel                       *uil_cellName;
 
 @property (nonatomic, strong) UIView                        *uiv_leftBar;
 
@@ -40,6 +46,7 @@ static float container_W = 160.0;
     _arr_cellName = [[NSMutableArray alloc] initWithObjects:@"DRIVING DIRECTION", @"PARKING", @"PUBLIC TRANSIT", nil];
     [self initVC];
     [self.view addSubview:_uiv_collapseContainer];
+    [self.view addSubview:_uiv_closedMenuContainer];
     
     [UIView animateWithDuration:0.33 animations:^{
         _uiv_collapseContainer.alpha = 1.0;
@@ -78,7 +85,7 @@ static float container_W = 160.0;
     [_uib_neighborhood setTitle:@"NEIGHBORHOOD" forState:UIControlStateNormal];
     _uib_neighborhood.titleLabel.font = [UIFont boldSystemFontOfSize:11.5];
     _uib_neighborhood.titleLabel.textColor = [UIColor whiteColor];
-    _uib_neighborhood.frame = CGRectMake(60.0, 0.0, 100, kCCHeaderHeight);
+    _uib_neighborhood.frame = CGRectMake(60.0, 0.0, container_W-60, kCCHeaderHeight);
     [_uib_neighborhood addTarget:self action:@selector(neighborhoodBtnTapped) forControlEvents:UIControlEventTouchDown];
     _uib_neighborhood.userInteractionEnabled = YES;
     
@@ -88,6 +95,19 @@ static float container_W = 160.0;
     [_uib_closeBtn setBackgroundImage:[UIImage imageNamed:@"map_menu_close.png"] forState:UIControlStateNormal];
     _uib_closeBtn.frame = CGRectMake(container_W-25, 0, 26, 26);
     [_uib_closeBtn addTarget:self action:@selector(closeButtonTapped) forControlEvents:UIControlEventTouchDown];
+    
+    //Set Closed Menu Container
+    _uiv_closedMenuContainer = [[UIView alloc] initWithFrame:CGRectMake(-41.0, (768-26)/2, 41.0, 26)];
+    [_uiv_closedMenuContainer setBackgroundColor:[UIColor colorWithWhite:0.4 alpha:1.0]];
+    _uib_openBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_uib_openBtn setBackgroundColor:[UIColor clearColor]];
+    [_uib_openBtn setBackgroundImage:[UIImage imageNamed:@"map_menu_open.png"] forState:UIControlStateNormal];
+    _uib_openBtn.frame = CGRectMake(15, 0, 26, 26);
+    [_uib_openBtn addTarget:self action:@selector(openMenu) forControlEvents:UIControlEventTouchDown];
+    
+    
+    [_uiv_closedMenuContainer addSubview:_uib_openBtn];
+    [self initCellNameLabel:nil];
     
     //Set Dark & Light Border of Buttons
     UIView *uiv_darkBar = [[UIView alloc] initWithFrame:CGRectMake(0.0, kCCHeaderHeight-1, container_W, 1)];
@@ -116,6 +136,31 @@ static float container_W = 160.0;
     _uiv_collapseContainer.alpha = 0.0;
 }
 
+-(void)initCellNameLabel:(NSString *)cellName
+{
+    [_uil_cellName removeFromSuperview];
+    _uil_cellName = [[UILabel alloc] initWithFrame:CGRectMake(5.0, 26.0, 30.0, 20.0)];
+    _uil_cellName.layer.anchorPoint = CGPointMake(0, 1.0);
+    [_uil_cellName setBackgroundColor:[UIColor clearColor]];
+    _uil_cellName.autoresizesSubviews = YES;
+    [_uil_cellName setText:cellName];
+    _uil_cellName.font = [UIFont boldSystemFontOfSize:16];
+    [_uil_cellName setTextColor:[UIColor whiteColor]];
+//    _uil_cellName.layer.anchorPoint = CGPointMake(0.5, 1.0);
+//    _uil_cellName.layer.transform = CATransform3DMakeRotation(M_PI_2, 0, 0, 0.5);
+    
+//    _uil_cellName.transform = CGAffineTransformMakeRotation(M_PI/2);
+    [_uiv_closedMenuContainer addSubview:_uil_cellName];
+    [_uil_cellName sizeToFit];
+    [_uil_cellName setTransform:CGAffineTransformMakeRotation(M_PI / 2)];
+    CGRect frame = _uil_cellName.frame;
+    frame.origin.x = _uil_cellName.frame.origin.x - 15;
+    frame.origin.y = (_uiv_closedMenuContainer.frame.size.height - _uil_cellName.frame.size.height)/2 - _uil_cellName.frame.size.height;
+    _uil_cellName.frame = frame;
+    
+    NSLog(@"%@",[_uil_cellName description]);
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -128,7 +173,7 @@ static float container_W = 160.0;
     NSLog(@"City button tapped");
     
     [self citySectionData];
-    
+    [self initCellNameLabel:nil];
     [UIView animateWithDuration:0.33 animations:^{
         _uiv_leftBar.alpha = 0.0;
     }];
@@ -147,7 +192,7 @@ static float container_W = 160.0;
     NSLog(@"Neighborhood button tapped");
     
     [self neighborhoodSectionData];
-    
+    [self initCellNameLabel:nil];
     [UIView animateWithDuration:0.33 animations:^{
         _uiv_leftBar.alpha = 0.0;
     }];
@@ -161,6 +206,24 @@ static float container_W = 160.0;
 -(void)closeButtonTapped
 {
     NSLog(@"!!! Then Menu Should Be Closed !!!");
+    [UIView animateWithDuration:0.33 animations:^{
+        _uiv_collapseContainer.transform = CGAffineTransformMakeTranslation(-(1+container_W), 0);
+    } completion:^(BOOL finished){
+        [UIView animateWithDuration:0.33 animations:^{
+            _uiv_closedMenuContainer.transform = CGAffineTransformMakeTranslation(41, 0);
+        }];
+    }];
+}
+
+-(void)openMenu
+{
+    [UIView animateWithDuration:0.33 animations:^{
+        _uiv_closedMenuContainer.transform = CGAffineTransformMakeTranslation(0, 0);
+    } completion:^(BOOL finished){
+        [UIView animateWithDuration:0.33 animations:^{
+            _uiv_collapseContainer.transform = CGAffineTransformMakeTranslation(0, 0);
+        }];
+    }];
 }
 
 #pragma mark - Init Data For 2 Sections
@@ -194,7 +257,7 @@ static float container_W = 160.0;
         _uiv_collapseContainer.alpha = 0.0;
     }];
     [_arr_cellName removeAllObjects];
-    _arr_cellName = [[NSMutableArray alloc] initWithObjects:@"HOTEL",@"DINING",@"FITNESS", nil];
+    _arr_cellName = [[NSMutableArray alloc] initWithObjects:@"SPAS",@"DINING",@"FITNESS", nil];
     theCollapseClick.CollapseClickDelegate = self;
     [theCollapseClick reloadCollapseClick];
     [UIView animateWithDuration:0.33 animations:^{
@@ -262,27 +325,37 @@ static float container_W = 160.0;
 
 -(void)didClickCollapseClickCellAtIndex:(int)index isNowOpen:(BOOL)open;
 {
+    NSString *test = [[NSString alloc] initWithString:[_arr_cellName objectAtIndex:index]];
+    NSLog(@"The name of tapped cell is %@", test);
+    
     [UIView animateWithDuration:0.33 animations:^{
         _uiv_leftBar.alpha = 0.0;
     }];
     [_uiv_leftBar removeFromSuperview];
     if (open == NO) {
         [_uiv_leftBar removeFromSuperview];
+        _uiv_closedMenuContainer.frame = CGRectMake(-41.0, (768-26)/2, 41.0, 26);
+        [_uil_cellName removeFromSuperview];
     }
     else
     {
+        _uiv_closedMenuContainer.frame = CGRectMake(-41.0, _uiv_collapseContainer.frame.origin.y, 41.0, _uiv_collapseContainer.frame.size.height);
         switch (index) {
             case 0:
                 [_uiv_leftBar setBackgroundColor:[UIColor redColor]];
+                [self initCellNameLabel:test];
                 break;
             case 1:
                 [_uiv_leftBar setBackgroundColor:[UIColor greenColor]];
+                [self initCellNameLabel:test];
                 break;
             case 2:
                 [_uiv_leftBar setBackgroundColor:[UIColor yellowColor]];
+                [self initCellNameLabel:test];
                 break;
                 
             default:
+                [self initCellNameLabel:nil];
                 break;
         }
         
@@ -306,7 +379,7 @@ static float container_W = 160.0;
             }
         }];
     }
-    NSLog(@"the index is %i",index);
-    NSLog(@"the Bool Value is %i", open);
+//    NSLog(@"the index is %i",index);
+//    NSLog(@"the Bool Value is %i", open);
 }
 @end
