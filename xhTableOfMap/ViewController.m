@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-static int numOfCells = 3;
+static int numOfCells = 4;
 static float container_W = 200.0;
 
 @interface ViewController ()
@@ -43,7 +43,7 @@ static float container_W = 200.0;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    _arr_cellName = [[NSMutableArray alloc] initWithObjects:@"DRIVING DIRECTION", @"PARKING", @"PUBLIC TRANSIT", nil];
+    _arr_cellName = [[NSMutableArray alloc] initWithObjects:@"DRIVING DIRECTION", @"PARKING", @"PUBLIC TRANSIT", @"444",nil];
     [self initVC];
     [self.view addSubview:_uiv_collapseContainer];
     [self.view addSubview:_uiv_closedMenuContainer];
@@ -61,9 +61,6 @@ static float container_W = 200.0;
     _uiv_collapseContainer = [[UIView alloc] init];
     _uiv_collapseContainer.frame = CGRectMake(0.0f, (768-kCCHeaderHeight*(numOfCells+1))/2, container_W, kCCHeaderHeight*(numOfCells+1));
     [_uiv_collapseContainer setBackgroundColor:[UIColor blackColor]];
-    
-//    // Set Each Cell's Frame
-//    _theCell = [[CollapseClickCell alloc] initWithFrame:CGRectMake(5.0, 0.0, container_W-10, 200.0)];
     
     //Set Collapse View's Frame
     theCollapseClick = [[CollapseClick alloc] initWithFrame:CGRectMake(0.0f, kCCHeaderHeight, container_W, kCCHeaderHeight*numOfCells)];
@@ -92,17 +89,17 @@ static float container_W = 200.0;
     //Set Close Button
     _uib_closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_uib_closeBtn setBackgroundColor:[UIColor clearColor]];
-    [_uib_closeBtn setBackgroundImage:[UIImage imageNamed:@"map_menu_close.png"] forState:UIControlStateNormal];
-    _uib_closeBtn.frame = CGRectMake(container_W-25, 0, 26, 26);
+    [_uib_closeBtn setBackgroundImage:[UIImage imageNamed:@"map_menu_close@2x.png"] forState:UIControlStateNormal];
+    _uib_closeBtn.frame = CGRectMake(container_W-35, 0, 36, 36);
     [_uib_closeBtn addTarget:self action:@selector(closeButtonTapped) forControlEvents:UIControlEventTouchDown];
     
     //Set Closed Menu Container
-    _uiv_closedMenuContainer = [[UIView alloc] initWithFrame:CGRectMake(-41.0, (768-26)/2, 41.0, 26)];
+    _uiv_closedMenuContainer = [[UIView alloc] initWithFrame:CGRectMake(-41.0, (768-36)/2, 41.0, 36)];
     [_uiv_closedMenuContainer setBackgroundColor:[UIColor colorWithWhite:0.4 alpha:1.0]];
     _uib_openBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_uib_openBtn setBackgroundColor:[UIColor clearColor]];
-    [_uib_openBtn setBackgroundImage:[UIImage imageNamed:@"map_menu_open.png"] forState:UIControlStateNormal];
-    _uib_openBtn.frame = CGRectMake(15, 0, 26, 26);
+    [_uib_openBtn setBackgroundImage:[UIImage imageNamed:@"map_menu_opne@2x.png"] forState:UIControlStateNormal];
+    _uib_openBtn.frame = CGRectMake(5, 0, 36, 36);
     [_uib_openBtn addTarget:self action:@selector(openMenu) forControlEvents:UIControlEventTouchDown];
     
     
@@ -139,17 +136,14 @@ static float container_W = 200.0;
 -(void)initCellNameLabel:(NSString *)cellName
 {
     [_uil_cellName removeFromSuperview];
-    _uil_cellName = [[UILabel alloc] initWithFrame:CGRectMake(5.0, 26.0, 30.0, 20.0)];
+    _uil_cellName = [[UILabel alloc] initWithFrame:CGRectMake(5.0, 36.0, 30.0, 20.0)];
     _uil_cellName.layer.anchorPoint = CGPointMake(0, 1.0);
     [_uil_cellName setBackgroundColor:[UIColor clearColor]];
     _uil_cellName.autoresizesSubviews = YES;
     [_uil_cellName setText:cellName];
     _uil_cellName.font = [UIFont boldSystemFontOfSize:16];
     [_uil_cellName setTextColor:[UIColor whiteColor]];
-//    _uil_cellName.layer.anchorPoint = CGPointMake(0.5, 1.0);
-//    _uil_cellName.layer.transform = CATransform3DMakeRotation(M_PI_2, 0, 0, 0.5);
-    
-//    _uil_cellName.transform = CGAffineTransformMakeRotation(M_PI/2);
+
     [_uiv_closedMenuContainer addSubview:_uil_cellName];
     [_uil_cellName sizeToFit];
     [_uil_cellName setTransform:CGAffineTransformMakeRotation(M_PI / 2)];
@@ -157,8 +151,6 @@ static float container_W = 200.0;
     frame.origin.x = _uil_cellName.frame.origin.x - 15;
     frame.origin.y = (_uiv_closedMenuContainer.frame.size.height - _uil_cellName.frame.size.height)/2 - _uil_cellName.frame.size.height;
     _uil_cellName.frame = frame;
-    
-    NSLog(@"%@",[_uil_cellName description]);
 }
 
 - (void)didReceiveMemoryWarning
@@ -170,8 +162,6 @@ static float container_W = 200.0;
 #pragma mark - Handle Button Actions
 -(void)cityBtnTapped
 {
-    NSLog(@"City button tapped");
-    
     [self citySectionData];
     [self initCellNameLabel:nil];
     [UIView animateWithDuration:0.33 animations:^{
@@ -189,8 +179,6 @@ static float container_W = 200.0;
 
 -(void)neighborhoodBtnTapped
 {
-    NSLog(@"Neighborhood button tapped");
-    
     [self neighborhoodSectionData];
     [self initCellNameLabel:nil];
     [UIView animateWithDuration:0.33 animations:^{
@@ -205,7 +193,6 @@ static float container_W = 200.0;
 }
 -(void)closeButtonTapped
 {
-    NSLog(@"!!! Then Menu Should Be Closed !!!");
     [UIView animateWithDuration:0.33 animations:^{
         _uiv_collapseContainer.transform = CGAffineTransformMakeTranslation(-(1+container_W), 0);
     } completion:^(BOOL finished){
@@ -237,7 +224,7 @@ static float container_W = 200.0;
         _uiv_collapseContainer.alpha = 0.0;
     }];
     [_arr_cellName removeAllObjects];
-    _arr_cellName = [[NSMutableArray alloc] initWithObjects:@"DRIVING DIRECTION", @"PARKING", @"PUBLIC TRANSIT", nil];
+    _arr_cellName = [[NSMutableArray alloc] initWithObjects:@"DRIVING DIRECTION", @"PARKING", @"PUBLIC TRANSIT", @"444",nil];
     theCollapseClick.CollapseClickDelegate = self;
     [theCollapseClick reloadCollapseClick];
     [UIView animateWithDuration:0.33 animations:^{
@@ -271,7 +258,15 @@ static float container_W = 200.0;
 
 // Required Methods
 -(int)numberOfCellsForCollapseClick {
-    return numOfCells;
+    if (isCity == YES) {
+        _uiv_collapseContainer.frame = CGRectMake(0.0f, (768-kCCHeaderHeight*(numOfCells+1))/2, container_W, kCCHeaderHeight*(numOfCells+1));
+        return 4;
+    }
+    if (isCity == NO) {
+        _uiv_collapseContainer.frame = CGRectMake(0.0f, (768-kCCHeaderHeight*(3+1))/2, container_W, kCCHeaderHeight*(3+1));
+        return 3;
+    }
+    return 4;
 }
 
 -(NSString *)titleForCollapseClickAtIndex:(int)index {
@@ -326,7 +321,6 @@ static float container_W = 200.0;
 -(void)didClickCollapseClickCellAtIndex:(int)index isNowOpen:(BOOL)open;
 {
     NSString *test = [[NSString alloc] initWithString:[_arr_cellName objectAtIndex:index]];
-    NSLog(@"The name of tapped cell is %@", test);
     
     [UIView animateWithDuration:0.33 animations:^{
         _uiv_leftBar.alpha = 0.0;
@@ -334,8 +328,8 @@ static float container_W = 200.0;
     [_uiv_leftBar removeFromSuperview];
     if (open == NO) {
         [_uiv_leftBar removeFromSuperview];
-        _uiv_closedMenuContainer.frame = CGRectMake(-41.0, (768-26)/2, 41.0, 26);
-        [_uil_cellName removeFromSuperview];
+        _uiv_closedMenuContainer.frame = CGRectMake(-41.0, (768-36)/2, 41.0, 36);
+        [_uil_cellName removeFromSuperview]; 
     }
     else
     {
@@ -379,7 +373,5 @@ static float container_W = 200.0;
             }
         }];
     }
-//    NSLog(@"the index is %i",index);
-//    NSLog(@"the Bool Value is %i", open);
 }
 @end
