@@ -237,7 +237,7 @@
             [self repositionCollapseClickCellsBelowIndex:index withOffset:cell.ContentView.frame.size.height + kCCPad];
             
             // Change Cell's BG color
-            [cell setBackgroundColor:[UIColor blackColor]];
+            [cell setBackgroundColor:[UIColor yellowColor]];
             cell.TitleLabel.alpha = 0.35;
         }];
     }

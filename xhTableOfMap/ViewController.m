@@ -61,10 +61,11 @@ static float container_W = 200.0;
     _uiv_collapseContainer = [[UIView alloc] init];
     _uiv_collapseContainer.frame = CGRectMake(0.0f, (768-kCCHeaderHeight*(numOfCells+1))/2, container_W, kCCHeaderHeight*(numOfCells+1));
     [_uiv_collapseContainer setBackgroundColor:[UIColor blackColor]];
+    _uiv_collapseContainer.clipsToBounds = YES;
     
     //Set Collapse View's Frame
     theCollapseClick = [[CollapseClick alloc] initWithFrame:CGRectMake(0.0f, kCCHeaderHeight, container_W, kCCHeaderHeight*numOfCells)];
-    [theCollapseClick setBackgroundColor:[UIColor blackColor]];
+    [theCollapseClick setBackgroundColor:[UIColor greenColor]];
     
     //Set Top Section Buttons
     _uib_city = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -254,16 +255,27 @@ static float container_W = 200.0;
     _uib_neighborhood.userInteractionEnabled = NO;
 //    [theCollapseClick closeCollapseClickCellAtIndex:_arr_cellName animated:YES];
 }
+
+-(void)resizeCollapseContainer:(int)numOfCell
+{
+    _uiv_collapseContainer.frame = CGRectMake(0.0f, (768-kCCHeaderHeight*(numOfCell+1))/2, container_W, kCCHeaderHeight*(numOfCell+1));
+    theCollapseClick.frame = CGRectMake(0.0f, kCCHeaderHeight, container_W, kCCHeaderHeight*numOfCell);
+    theCollapseClick.originalFrameSize = theCollapseClick.frame.size;
+}
 #pragma mark - Collapse Click Delegate
 
 // Required Methods
 -(int)numberOfCellsForCollapseClick {
     if (isCity == YES) {
-        _uiv_collapseContainer.frame = CGRectMake(0.0f, (768-kCCHeaderHeight*(numOfCells+1))/2, container_W, kCCHeaderHeight*(numOfCells+1));
+//        _uiv_collapseContainer.frame = CGRectMake(0.0f, (768-kCCHeaderHeight*(numOfCells+1))/2, container_W, kCCHeaderHeight*(numOfCells+1));
+        [self resizeCollapseContainer:4];
         return 4;
     }
-    if (isCity == NO) {
-        _uiv_collapseContainer.frame = CGRectMake(0.0f, (768-kCCHeaderHeight*(3+1))/2, container_W, kCCHeaderHeight*(3+1));
+//    if (isCity == NO) {
+    else{
+//        _uiv_collapseContainer.frame = CGRectMake(0.0f, (768-kCCHeaderHeight*(3+1))/2, container_W, kCCHeaderHeight*(3+1));
+        [self resizeCollapseContainer:3];
+        [_uiv_collapseContainer setBackgroundColor:[UIColor redColor]];
         return 3;
     }
     return 4;
