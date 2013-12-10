@@ -33,6 +33,7 @@
 		82092A34183FFD03003080C4 /* diningTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82092A32183FFD03003080C4 /* diningTableViewController.m */; };
 		82092A35183FFD03003080C4 /* diningTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82092A33183FFD03003080C4 /* diningTableViewController.xib */; };
 		82220C401840111400B5E66E /* hotspotLis.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82220C3F1840111400B5E66E /* hotspotLis.plist */; };
+		823BC94F18565C83008E1EF7 /* tableData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 823BC94E18565C83008E1EF7 /* tableData.plist */; };
 		826CEBD518451E95009D7101 /* map_menu_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 826CEBD318451E95009D7101 /* map_menu_close.png */; };
 		826CEBD618451E95009D7101 /* map_menu_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 826CEBD418451E95009D7101 /* map_menu_close@2x.png */; };
 		826CEBDD1845367E009D7101 /* publicT.png in Resources */ = {isa = PBXBuildFile; fileRef = 826CEBDB1845367E009D7101 /* publicT.png */; };
@@ -89,6 +90,7 @@
 		82092A32183FFD03003080C4 /* diningTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = diningTableViewController.m; sourceTree = "<group>"; };
 		82092A33183FFD03003080C4 /* diningTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = diningTableViewController.xib; sourceTree = "<group>"; };
 		82220C3F1840111400B5E66E /* hotspotLis.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hotspotLis.plist; sourceTree = "<group>"; };
+		823BC94E18565C83008E1EF7 /* tableData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tableData.plist; sourceTree = "<group>"; };
 		826CEBD318451E95009D7101 /* map_menu_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_menu_close.png; sourceTree = "<group>"; };
 		826CEBD418451E95009D7101 /* map_menu_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_menu_close@2x.png"; sourceTree = "<group>"; };
 		826CEBDB1845367E009D7101 /* publicT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = publicT.png; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				82092A33183FFD03003080C4 /* diningTableViewController.xib */,
 				82092A2A183FDAFE003080C4 /* hotspotList.plist */,
 				82220C3F1840111400B5E66E /* hotspotLis.plist */,
+				823BC94E18565C83008E1EF7 /* tableData.plist */,
 				826CEBD318451E95009D7101 /* map_menu_close.png */,
 				826CEBD418451E95009D7101 /* map_menu_close@2x.png */,
 				82A3E720184F8AB800EC7CC1 /* map_menu_open.png */,
@@ -313,6 +316,7 @@
 				82092A2B183FDAFE003080C4 /* hotspotList.plist in Resources */,
 				826CEBDE1845367E009D7101 /* publicT@2x.png in Resources */,
 				82220C401840111400B5E66E /* hotspotLis.plist in Resources */,
+				823BC94F18565C83008E1EF7 /* tableData.plist in Resources */,
 				82A3E722184F8AB800EC7CC1 /* map_menu_open.png in Resources */,
 				82092A35183FFD03003080C4 /* diningTableViewController.xib in Resources */,
 				82092A24183FB300003080C4 /* CollapseClickCell.xib in Resources */,

@@ -43,7 +43,7 @@ static float container_W = 200.0;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    _arr_cellName = [[NSMutableArray alloc] initWithObjects:@"DRIVING DIRECTION", @"PARKING", @"PUBLIC TRANSIT", @"444",nil];
+    _arr_cellName = [[NSMutableArray alloc] initWithObjects:@"DRIVING DIRECTION", @"PARKING", @"PUBLIC TRANSIT", @"444", nil];
     [self initVC];
     [self.view addSubview:_uiv_collapseContainer];
     [self.view addSubview:_uiv_closedMenuContainer];
@@ -65,7 +65,7 @@ static float container_W = 200.0;
     
     //Set Collapse View's Frame
     theCollapseClick = [[CollapseClick alloc] initWithFrame:CGRectMake(0.0f, kCCHeaderHeight, container_W, kCCHeaderHeight*numOfCells)];
-    [theCollapseClick setBackgroundColor:[UIColor greenColor]];
+    [theCollapseClick setBackgroundColor:[UIColor blackColor]];
     
     //Set Top Section Buttons
     _uib_city = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -137,7 +137,7 @@ static float container_W = 200.0;
 -(void)initCellNameLabel:(NSString *)cellName
 {
     [_uil_cellName removeFromSuperview];
-    _uil_cellName = [[UILabel alloc] initWithFrame:CGRectMake(5.0, 36.0, 30.0, 20.0)];
+    _uil_cellName = [[UILabel alloc] initWithFrame:CGRectMake(10.5, 36.0, 30.0, 20.0)];
     _uil_cellName.layer.anchorPoint = CGPointMake(0, 1.0);
     [_uil_cellName setBackgroundColor:[UIColor clearColor]];
     _uil_cellName.autoresizesSubviews = YES;
@@ -174,8 +174,7 @@ static float container_W = 200.0;
     _uib_neighborhood.alpha = 1.0;
     [_uib_city setBackgroundColor:[UIColor blackColor]];
     _uib_city.alpha = 0.35;
-    
-
+    _uiv_closedMenuContainer.frame = CGRectMake(-41.0, (768-36)/2, 41.0, 36);
 }
 
 -(void)neighborhoodBtnTapped
@@ -191,6 +190,7 @@ static float container_W = 200.0;
     _uib_city.alpha = 1.0;
     [_uib_neighborhood setBackgroundColor:[UIColor blackColor]];
     _uib_neighborhood.alpha = 0.35;
+    _uiv_closedMenuContainer.frame = CGRectMake(-41.0, (768-36)/2, 41.0, 36);
 }
 -(void)closeButtonTapped
 {
@@ -275,7 +275,7 @@ static float container_W = 200.0;
     else{
 //        _uiv_collapseContainer.frame = CGRectMake(0.0f, (768-kCCHeaderHeight*(3+1))/2, container_W, kCCHeaderHeight*(3+1));
         [self resizeCollapseContainer:3];
-        [_uiv_collapseContainer setBackgroundColor:[UIColor redColor]];
+        [_uiv_collapseContainer setBackgroundColor:[UIColor blackColor]];
         return 3;
     }
     return 4;
