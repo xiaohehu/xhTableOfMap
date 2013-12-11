@@ -292,9 +292,13 @@ static float container_W = 200.0;
     switch (index) {
         case 0:
             _hotelTableView = [[hotelTableViewController alloc] init];
+            CGRect tableSize = _hotelTableView.view.frame;
+            tableSize.size.width = container_W;
+            tableSize.size.height = 3.5*44;
+            _hotelTableView.view.frame = tableSize;
            [uiv_tableHotels addSubview:self.hotelTableView.view];
             [uiv_tableHotels setBackgroundColor:[UIColor brownColor]];
-            return uiv_tableHotels;
+            return _hotelTableView.view;
             break;
         case 1:
             _diningTableView = [[diningTableViewController alloc] init];
