@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CollapseClickArrow.h"
 
-#define kCCHeaderHeight 50
+#define kCCHeaderHeight 32
 
 @interface CollapseClickCell : UIView
 

@@ -13,6 +13,13 @@
 @synthesize arr_indexArray;
 @synthesize originalFrameSize;
 
+-(UIColor *) normalCellColor{
+    return [UIColor colorWithRed:59.0/255.0 green:55.0/255.0 blue:50.0/255.0 alpha:0.9];
+}
+-(UIColor *) chosenCellColor{
+    return [UIColor colorWithRed:38.0/255.0 green:36.0/255.0 blue:33.0/255.0 alpha:1.0];
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -88,7 +95,9 @@
             cell.TitleView.backgroundColor = [CollapseClickDelegate colorForCollapseClickTitleViewAtIndex:xx];
         }
         else {
-            cell.TitleView.backgroundColor = [UIColor colorWithWhite:0.4 alpha:1.0];
+//            cell.TitleView.backgroundColor = [UIColor colorWithWhite:0.4 alpha:1.0];
+            cell.TitleView.backgroundColor = [self normalCellColor];
+//            cell.TitleView.backgroundColor = [UIColor clearColor];
         }
         
         
@@ -237,8 +246,8 @@
             [self repositionCollapseClickCellsBelowIndex:index withOffset:cell.ContentView.frame.size.height + kCCPad];
             
             // Change Cell's BG color
-            [cell setBackgroundColor:[UIColor blackColor]];
-            cell.TitleLabel.alpha = 0.35;
+            cell.TitleView.backgroundColor = [self chosenCellColor];
+//            cell.TitleLabel.alpha = 0.35;
         }];
     }
 }
@@ -280,8 +289,9 @@
             [self repositionCollapseClickCellsBelowIndex:index withOffset:-1*(cell.ContentView.frame.size.height + kCCPad)];
             
             //Change Cell's BG color
-            cell.BackgroundColor=[UIColor colorWithWhite:0.4 alpha:1.0];
-            cell.TitleLabel.alpha = 1.0;
+//            cell.BackgroundColor=[UIColor colorWithWhite:0.4 alpha:1.0];
+            cell.TitleView.backgroundColor = [self normalCellColor];
+//            cell.TitleLabel.alpha = 1.0;
         }];
     }
 }
