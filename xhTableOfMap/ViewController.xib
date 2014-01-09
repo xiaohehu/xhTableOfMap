@@ -30,7 +30,7 @@
         <view contentMode="scaleToFill" id="Ibu-iy-lZI" userLabel="View-Hotels">
             <rect key="frame" x="0.0" y="0.0" width="200" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="0.81999999999999995" colorSpace="calibratedRGB"/>
         </view>
         <view contentMode="scaleToFill" id="AjP-0n-2bc" userLabel="View-Dining">
             <rect key="frame" x="0.0" y="0.0" width="200" height="150"/>

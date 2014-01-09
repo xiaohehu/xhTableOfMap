@@ -29,7 +29,7 @@
     cell.index = index;
     cell.TitleButton.tag = index;
     cell.ContentView.frame = CGRectMake(cell.ContentView.frame.origin.x+10, cell.ContentView.frame.origin.y, cell.ContentView.frame.size.width, content.frame.size.height);
-    
+    [cell.TitleLabel setFont:[UIFont fontWithName:@"DINPro-CondBlack" size:16.0]];
 //    cell.ContentView.clipsToBounds = YES;
 //    [cell.ContentView setClipsToBounds:YES];
 //    [cell.ContentView setContentMode:UIViewContentModeLeft];

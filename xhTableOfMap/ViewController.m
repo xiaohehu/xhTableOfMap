@@ -10,7 +10,7 @@
 
 static int numOfCells = 4;
 static float container_W = 186.0;
-
+static float kClosedMenu_W = 40.0;
 @interface ViewController ()
 @property (nonatomic, strong) hotspotTableViewController    *fitnessTableView;
 @property (nonatomic, strong) hotelTableViewController      *hotelTableView;
@@ -21,6 +21,7 @@ static float container_W = 186.0;
 
 @property (nonatomic, strong) UIView                        *uiv_collapseContainer;
 @property (nonatomic, strong) UIView                        *uiv_closedMenuContainer;
+@property (nonatomic, strong) UIView                        *uiv_nameLabelContainer;
 
 @property (nonatomic, strong) UIButton                      *uib_city;
 @property (nonatomic, strong) UIButton                      *uib_neighborhood;
@@ -88,19 +89,30 @@ static float container_W = 186.0;
     _uib_city = [UIButton buttonWithType:UIButtonTypeCustom];
     [_uib_city setBackgroundColor:[self chosenBtnColor]];
     [_uib_city setTitle:@"CITY" forState:UIControlStateNormal];
-    _uib_city.titleLabel.font = [UIFont fontWithName:@"DINPro-CondBlack" size:12.5];
-    [_uib_city .titleLabel setFont:[UIFont fontWithName:@"DINPro-CondBlack" size:12.5]];
+//    _uib_city.titleLabel.font = [UIFont fontWithName:@"DINPro-CondBlack" size:12.5];
+    [_uib_city .titleLabel setFont:[UIFont fontWithName:@"DINPro-CondBlack" size:16]];
+    [_uib_city setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
+    [_uib_city setContentVerticalAlignment:UIControlContentVerticalAlignmentBottom];
+    CGFloat rightSpace = 12.0;
+    CGFloat bottomSpace = 1.0;
+    [_uib_city setContentEdgeInsets:UIEdgeInsetsMake(0, 0, bottomSpace, rightSpace)];
     [_uib_city setTitleColor:[self chosenBtnTitleColor] forState:UIControlStateNormal];
-    _uib_city.frame = CGRectMake(0.0, 0.0, 60, kCCHeaderHeight);
+    _uib_city.frame = CGRectMake(0.0, 0.0, 55, kCCHeaderHeight);
     [_uib_city addTarget:self action:@selector(cityBtnTapped) forControlEvents:UIControlEventTouchDown];
     _uib_city.userInteractionEnabled = YES;
     
     _uib_neighborhood = [UIButton buttonWithType:UIButtonTypeCustom];
     [_uib_neighborhood setBackgroundColor:[self normalCellColor]];
     [_uib_neighborhood setTitle:@"NEIGHBORHOOD" forState:UIControlStateNormal];
-    _uib_neighborhood.titleLabel.font = [UIFont boldSystemFontOfSize:11.5];
+//    _uib_neighborhood.titleLabel.font = [UIFont boldSystemFontOfSize:11.5];
+    [_uib_neighborhood .titleLabel setFont:[UIFont fontWithName:@"DINPro-CondBlack" size:16]];
     _uib_neighborhood.titleLabel.textColor = [UIColor whiteColor];
-    _uib_neighborhood.frame = CGRectMake(60.0, 0.0, container_W-60, kCCHeaderHeight);
+    _uib_neighborhood.frame = CGRectMake(55.0, 0.0, container_W-55, kCCHeaderHeight);
+    CGFloat leftSpacing = 8.0;
+    [_uib_neighborhood setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+    [_uib_neighborhood setContentVerticalAlignment:UIControlContentVerticalAlignmentBottom];
+    [_uib_neighborhood setContentEdgeInsets:UIEdgeInsetsMake(0, leftSpacing, bottomSpace, 0)];
+//    _uib_neighborhood.titleEdgeInsets = UIEdgeInsetsMake(0, spacing, 0, 0);
     [_uib_neighborhood addTarget:self action:@selector(neighborhoodBtnTapped) forControlEvents:UIControlEventTouchDown];
     _uib_neighborhood.userInteractionEnabled = NO;
     
@@ -108,31 +120,22 @@ static float container_W = 186.0;
     _uib_closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_uib_closeBtn setBackgroundColor:[UIColor clearColor]];
     [_uib_closeBtn setBackgroundImage:[UIImage imageNamed:@"map_menu_close@2x.png"] forState:UIControlStateNormal];
-    _uib_closeBtn.frame = CGRectMake(container_W-35, 0, 36, 36);
+    _uib_closeBtn.frame = CGRectMake(container_W-29, 0, 30, 30);
     [_uib_closeBtn addTarget:self action:@selector(closeButtonTapped) forControlEvents:UIControlEventTouchDown];
     
     //Set Closed Menu Container
-    _uiv_closedMenuContainer = [[UIView alloc] initWithFrame:CGRectMake(-41.0, (768-38)/2, 41.0, 38)];
-//    [_uiv_closedMenuContainer setBackgroundColor:[UIColor colorWithWhite:0.4 alpha:1.0]];
+    _uiv_closedMenuContainer = [[UIView alloc] initWithFrame:CGRectMake(-40.0, (768-38)/2, kClosedMenu_W, kClosedMenu_W)];
+    _uiv_closedMenuContainer.clipsToBounds = NO;
     [_uiv_closedMenuContainer setBackgroundColor:[self normalCellColor]];
     _uib_openBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_uib_openBtn setBackgroundColor:[UIColor clearColor]];
     [_uib_openBtn setBackgroundImage:[UIImage imageNamed:@"open_btn.jpg"] forState:UIControlStateNormal];
-    _uib_openBtn.frame = CGRectMake(0, 0, 41, 38);
+    _uib_openBtn.frame = CGRectMake(0, 0, kClosedMenu_W, kClosedMenu_W);
     [_uib_openBtn addTarget:self action:@selector(openMenu) forControlEvents:UIControlEventTouchDown];
     
     
     [_uiv_closedMenuContainer addSubview:_uib_openBtn];
     [self initCellNameLabel:nil];
-    
-//    //Set Dark & Light Border of Buttons
-//    UIView *uiv_darkBar = [[UIView alloc] initWithFrame:CGRectMake(0.0, kCCHeaderHeight-1, container_W, 1)];
-//    [uiv_darkBar setBackgroundColor:[UIColor blackColor]];
-//    uiv_darkBar.alpha = 0.35;
-//    
-//    UIView *uiv_lightBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, container_W, 1)];
-//    [uiv_lightBar setBackgroundColor: [UIColor whiteColor]];
-//    uiv_lightBar.alpha = 0.25;
     
     //Set Left Bar Of Table
     _uiv_leftBar = [[UIView alloc] init];
@@ -154,22 +157,37 @@ static float container_W = 186.0;
 
 -(void)initCellNameLabel:(NSString *)cellName
 {
+    //Init UILabel
+    CGFloat padding = 0.0;
+    if (cellName)
+        padding = 12.0;
+
     [_uil_cellName removeFromSuperview];
-    _uil_cellName = [[UILabel alloc] initWithFrame:CGRectMake(10.5, 136.0, 30.0, 20.0)];
+    _uil_cellName = [[UILabel alloc] initWithFrame:CGRectMake(10, 48.0, 30.0, 20.0)];//_uib_openBtn.frame.size.height = 40, space = 8, 40+8=48
     _uil_cellName.layer.anchorPoint = CGPointMake(0, 1.0);
     [_uil_cellName setBackgroundColor:[UIColor clearColor]];
     _uil_cellName.autoresizesSubviews = YES;
     [_uil_cellName setText:cellName];
-    _uil_cellName.font = [UIFont boldSystemFontOfSize:16];
+    _uil_cellName.font = [UIFont fontWithName:@"DINPro-CondBlack" size:16];
     [_uil_cellName setTextColor:[UIColor whiteColor]];
-
     [_uiv_closedMenuContainer addSubview:_uil_cellName];
-    [_uil_cellName sizeToFit];
-    [_uil_cellName setTransform:CGAffineTransformMakeRotation(M_PI / 2)];
+    
+    // Adjust the frame of label after changing the anchor point
     CGRect frame = _uil_cellName.frame;
     frame.origin.x = _uil_cellName.frame.origin.x - 15;
-    frame.origin.y = (_uiv_closedMenuContainer.frame.size.height - _uil_cellName.frame.size.height)/2 - _uil_cellName.frame.size.height;
+    frame.origin.y = _uil_cellName.frame.origin.y - 6;
+    
+    [_uil_cellName setTransform:CGAffineTransformMakeRotation(M_PI / 2)];
     _uil_cellName.frame = frame;
+    
+    [_uil_cellName sizeToFit];
+    //Adjust the frame of container according to the height of label
+    CGRect containerFrame = _uiv_closedMenuContainer.frame;
+    containerFrame.size.height = _uib_openBtn.frame.size.height + padding + _uil_cellName.frame.size.height + padding;
+    containerFrame.size.width = kClosedMenu_W;
+    containerFrame.origin.y = (768 - containerFrame.size.height)/2;
+    containerFrame.origin.x = _uiv_closedMenuContainer.frame.origin.x;
+    _uiv_closedMenuContainer.frame = containerFrame;
 }
 
 - (void)didReceiveMemoryWarning
@@ -315,11 +333,16 @@ static float container_W = 186.0;
     switch (index) {
         case 0:
             _hotelTableView = [[hotelTableViewController alloc] init];
-            CGRect tableSize = _hotelTableView.view.frame;
-            tableSize.size.width = container_W;
-            tableSize.size.height = 3.5*44;
-            _hotelTableView.view.frame = tableSize;
+            
+//            CGRect tableSize = _hotelTableView.view.frame;
+//            tableSize.size.width = container_W;
+//            tableSize.size.height = 3.5*44;
+//            _hotelTableView.view.frame = tableSize;
+            
+            _hotelTableView.view.frame = CGRectInset(uiv_tableHotels.frame, 10, 0);
+            
            [uiv_tableHotels addSubview:self.hotelTableView.view];
+           
 //            [uiv_tableHotels setBackgroundColor:[UIColor brownColor]];
             return _hotelTableView.view;
             break;
@@ -393,22 +416,22 @@ static float container_W = 186.0;
         }
         
         
-        _uiv_leftBar.frame = CGRectMake(0.0, kCCHeaderHeight+index*kCCHeaderHeight, 5.0, 0);
+        _uiv_leftBar.frame = CGRectMake(0.0, kCCHeaderHeight+index*kCCHeaderHeight, 4.0, 0);
         [_uiv_collapseContainer insertSubview:_uiv_leftBar aboveSubview:theCollapseClick];
         _uiv_leftBar.alpha = 0.0;
         [UIView animateWithDuration:0.68 animations:^{
             _uiv_leftBar.alpha = 1.0;
             
             if (isCity && (index != 2)) {
-                _uiv_leftBar.frame = CGRectMake(0.0, kCCHeaderHeight+index*kCCHeaderHeight, 5.0, kCCHeaderHeight+150);
+                _uiv_leftBar.frame = CGRectMake(0.0, kCCHeaderHeight+index*kCCHeaderHeight, 4.0, kCCHeaderHeight+150);
             }
            else if (isCity == NO)
             {
-                _uiv_leftBar.frame = CGRectMake(0.0, kCCHeaderHeight+index*kCCHeaderHeight, 5.0, kCCHeaderHeight+150);
+                _uiv_leftBar.frame = CGRectMake(0.0, kCCHeaderHeight+index*kCCHeaderHeight, 4.0, kCCHeaderHeight+150);
             }
             else
             {
-                _uiv_leftBar.frame = CGRectMake(0.0, kCCHeaderHeight+index*kCCHeaderHeight, 5.0, kCCHeaderHeight+47);
+                _uiv_leftBar.frame = CGRectMake(0.0, kCCHeaderHeight+index*kCCHeaderHeight, 4.0, kCCHeaderHeight+47);
             }
         }];
     }

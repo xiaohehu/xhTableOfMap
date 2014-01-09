@@ -34,6 +34,8 @@
 		82092A35183FFD03003080C4 /* diningTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82092A33183FFD03003080C4 /* diningTableViewController.xib */; };
 		820A1561187DA22D00725899 /* location_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 820A155F187DA22D00725899 /* location_bg.jpg */; };
 		820A1562187DA22D00725899 /* location_bg@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 820A1560187DA22D00725899 /* location_bg@2x.jpg */; };
+		821FF386187EEF1D00197F88 /* DINPro-CondBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = 82A6B089187E0453008B02A6 /* DINPro-CondBlack.otf */; };
+		821FF388187EF10200197F88 /* DINEngschriftStd.otf in Resources */ = {isa = PBXBuildFile; fileRef = 821FF387187EF10200197F88 /* DINEngschriftStd.otf */; };
 		82220C401840111400B5E66E /* hotspotLis.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82220C3F1840111400B5E66E /* hotspotLis.plist */; };
 		823BC94F18565C83008E1EF7 /* tableData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 823BC94E18565C83008E1EF7 /* tableData.plist */; };
 		826CEBD518451E95009D7101 /* map_menu_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 826CEBD318451E95009D7101 /* map_menu_close.png */; };
@@ -95,6 +97,7 @@
 		82092A33183FFD03003080C4 /* diningTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = diningTableViewController.xib; sourceTree = "<group>"; };
 		820A155F187DA22D00725899 /* location_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = location_bg.jpg; sourceTree = "<group>"; };
 		820A1560187DA22D00725899 /* location_bg@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "location_bg@2x.jpg"; sourceTree = "<group>"; };
+		821FF387187EF10200197F88 /* DINEngschriftStd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DINEngschriftStd.otf; sourceTree = "<group>"; };
 		82220C3F1840111400B5E66E /* hotspotLis.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hotspotLis.plist; sourceTree = "<group>"; };
 		823BC94E18565C83008E1EF7 /* tableData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tableData.plist; sourceTree = "<group>"; };
 		826CEBD318451E95009D7101 /* map_menu_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_menu_close.png; sourceTree = "<group>"; };
@@ -193,6 +196,7 @@
 				82A6B085187DE463008B02A6 /* open_btn.jpg */,
 				82A6B086187DE463008B02A6 /* open_btn@2x.jpg */,
 				82A6B089187E0453008B02A6 /* DINPro-CondBlack.otf */,
+				821FF387187EF10200197F88 /* DINEngschriftStd.otf */,
 				820929EE183F9F1D003080C4 /* Images.xcassets */,
 				82092A19183FB300003080C4 /* CollapseClickDemo */,
 				820929DD183F9F1D003080C4 /* Supporting Files */,
@@ -234,11 +238,11 @@
 			children = (
 				82092A1A183FB300003080C4 /* CollapseClick.h */,
 				82092A1B183FB300003080C4 /* CollapseClick.m */,
-				82092A20183FB300003080C4 /* CollapseClickCell.xib */,
 				82092A1C183FB300003080C4 /* CollapseClickArrow.h */,
 				82092A1D183FB300003080C4 /* CollapseClickArrow.m */,
 				82092A1E183FB300003080C4 /* CollapseClickCell.h */,
 				82092A1F183FB300003080C4 /* CollapseClickCell.m */,
+				82092A20183FB300003080C4 /* CollapseClickCell.xib */,
 			);
 			path = CollapseClickDemo;
 			sourceTree = "<group>";
@@ -329,6 +333,7 @@
 				826CEBD618451E95009D7101 /* map_menu_close@2x.png in Resources */,
 				820A1561187DA22D00725899 /* location_bg.jpg in Resources */,
 				82A6B088187DE463008B02A6 /* open_btn@2x.jpg in Resources */,
+				821FF386187EEF1D00197F88 /* DINPro-CondBlack.otf in Resources */,
 				82092A2B183FDAFE003080C4 /* hotspotList.plist in Resources */,
 				82A6B087187DE463008B02A6 /* open_btn.jpg in Resources */,
 				826CEBDE1845367E009D7101 /* publicT@2x.png in Resources */,
@@ -336,6 +341,7 @@
 				820A1562187DA22D00725899 /* location_bg@2x.jpg in Resources */,
 				823BC94F18565C83008E1EF7 /* tableData.plist in Resources */,
 				82A3E722184F8AB800EC7CC1 /* map_menu_open.png in Resources */,
+				821FF388187EF10200197F88 /* DINEngschriftStd.otf in Resources */,
 				82092A35183FFD03003080C4 /* diningTableViewController.xib in Resources */,
 				82092A24183FB300003080C4 /* CollapseClickCell.xib in Resources */,
 				82A3E723184F8AB800EC7CC1 /* map_menu_opne@2x.png in Resources */,
