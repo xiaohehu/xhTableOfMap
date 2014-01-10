@@ -8,12 +8,16 @@
 
 #import "ViewController.h"
 
+//#import "hotspotTableViewController.h"
+
+
 static int numOfCells = 4;
 static float container_W = 186.0;
 static float kClosedMenu_W = 40.0;
 @interface ViewController ()
 @property (nonatomic, strong) hotspotTableViewController    *fitnessTableView;
 @property (nonatomic, strong) hotelTableViewController      *hotelTableView;
+@property (nonatomic, strong) hotelTableViewController      *telTableView;
 @property (nonatomic, strong) diningTableViewController     *diningTableView;
 @property (nonatomic, strong) CollapseClickCell             *theCell;
 
@@ -137,10 +141,10 @@ static float kClosedMenu_W = 40.0;
     [_uiv_closedMenuContainer addSubview:_uib_openBtn];
     [self initCellNameLabel:nil];
     
-    //Set Left Bar Of Table
-    _uiv_leftBar = [[UIView alloc] init];
-    [_uiv_leftBar setBackgroundColor:[UIColor clearColor]];
-    _uiv_leftBar.alpha = 0.0;
+//    //Set Left Bar Of Table
+//    _uiv_leftBar = [[UIView alloc] init];
+//    [_uiv_leftBar setBackgroundColor:[UIColor clearColor]];
+//    _uiv_leftBar.alpha = 0.0;
     
     theCollapseClick.CollapseClickDelegate = self;
     [theCollapseClick reloadCollapseClick];
@@ -175,7 +179,7 @@ static float kClosedMenu_W = 40.0;
     // Adjust the frame of label after changing the anchor point
     CGRect frame = _uil_cellName.frame;
     frame.origin.x = _uil_cellName.frame.origin.x - 15;
-    frame.origin.y = _uil_cellName.frame.origin.y - 6;
+    frame.origin.y = _uil_cellName.frame.origin.y - (18-padding);
     
     [_uil_cellName setTransform:CGAffineTransformMakeRotation(M_PI / 2)];
     _uil_cellName.frame = frame;
@@ -201,10 +205,10 @@ static float kClosedMenu_W = 40.0;
 {
     [self citySectionData];
     [self initCellNameLabel:nil];
-    [UIView animateWithDuration:0.33 animations:^{
-        _uiv_leftBar.alpha = 0.0;
-    }];
-    [_uiv_leftBar removeFromSuperview];
+//    [UIView animateWithDuration:0.33 animations:^{
+//        _uiv_leftBar.alpha = 0.0;
+//    }];
+//    [_uiv_leftBar removeFromSuperview];
     
     [_uib_neighborhood setBackgroundColor:[self chosenBtnColor]];
     _uib_neighborhood.alpha = 1.0;
@@ -219,10 +223,10 @@ static float kClosedMenu_W = 40.0;
 {
     [self neighborhoodSectionData];
     [self initCellNameLabel:nil];
-    [UIView animateWithDuration:0.33 animations:^{
-        _uiv_leftBar.alpha = 0.0;
-    }];
-    [_uiv_leftBar removeFromSuperview];
+//    [UIView animateWithDuration:0.33 animations:^{
+//        _uiv_leftBar.alpha = 0.0;
+//    }];
+//    [_uiv_leftBar removeFromSuperview];
     
     [_uib_city setBackgroundColor:[self chosenBtnColor]];
     _uib_city.alpha = 1.0;
@@ -329,29 +333,48 @@ static float kClosedMenu_W = 40.0;
 }
 
 -(UIView *)viewForCollapseClickContentViewAtIndex:(int)index {
-
+    CGRect tableSize;
     switch (index) {
-        case 0:
+        case 0:{
             _hotelTableView = [[hotelTableViewController alloc] init];
-            
-//            CGRect tableSize = _hotelTableView.view.frame;
-//            tableSize.size.width = container_W;
-//            tableSize.size.height = 3.5*44;
-//            _hotelTableView.view.frame = tableSize;
-            
-            _hotelTableView.view.frame = CGRectInset(uiv_tableHotels.frame, 10, 0);
-            
+//            [_hotelTableView setStr_plistName:@"hotspotLis"];
+            NSString *path = [[NSBundle mainBundle] pathForResource:
+                              @"hotspotList" ofType:@"plist"];
+            _hotelTableView.arr_tableData = [[NSMutableArray alloc] initWithContentsOfFile:path];
+            tableSize = _hotelTableView.view.frame;
+            tableSize.size.width = container_W;
+            tableSize.size.height = 120;
+    
+            _hotelTableView.view.frame = tableSize;
+            _hotelTableView.view.backgroundColor = [UIColor clearColor];
            [uiv_tableHotels addSubview:self.hotelTableView.view];
-           
-//            [uiv_tableHotels setBackgroundColor:[UIColor brownColor]];
+
             return _hotelTableView.view;
             break;
-        case 1:
-            _diningTableView = [[diningTableViewController alloc] init];
-           [uiv_tableDining addSubview:self.diningTableView.view];
-//            [uiv_tableDining setBackgroundColor:[UIColor blueColor]];
-            return uiv_tableDining;
+        }
+        case 1:{
+//            _hotelTableView = nil;
+//            _hotelTableView = [[hotelTableViewController alloc] init];
+            _telTableView = [[hotelTableViewController alloc] init];
+            _telTableView.str_plistName = @"hotspotList";
+            
+            NSString *path = [[NSBundle mainBundle] pathForResource:
+                              @"hotspotLis" ofType:@"plist"];
+            _telTableView.arr_tableData = [[NSMutableArray alloc] initWithContentsOfFile:path];
+            [_telTableView.tableView reloadData];
+
+            tableSize = _telTableView.view.frame;
+            tableSize.size.width = container_W;
+            tableSize.size.height = 120;
+            
+            _telTableView.view.frame = tableSize;
+            [_telTableView reloadInputViews];
+            
+             //[telTableView.view addSubview:self.hotelTableView.view];
+            
+            return _telTableView.view;
             break;
+        }
         case 2:
             if (isCity) {
                 for (UIView *tmp in [uiv_tableFitness subviews]) {
@@ -379,17 +402,35 @@ static float kClosedMenu_W = 40.0;
             break;
     }
 }
-
+-(UIColor *)colorForTitleSideBarAtIndex:(int)index
+{
+    switch (index) {
+        case 0:
+            return [UIColor redColor];
+            break;
+        case 1:
+            return [UIColor greenColor];
+        default:
+            return [UIColor clearColor];
+            break;
+    }
+}
 -(void)didClickCollapseClickCellAtIndex:(int)index isNowOpen:(BOOL)open;
 {
+    if (index==1) {
+        [_telTableView.view addSubview:self.hotelTableView.view];
+    } else {
+        [uiv_tableFitness addSubview:self.hotelTableView.view];
+    }
+    
     NSString *test = [[NSString alloc] initWithString:[_arr_cellName objectAtIndex:index]];
     
-    [UIView animateWithDuration:0.33 animations:^{
-        _uiv_leftBar.alpha = 0.0;
-    }];
-    [_uiv_leftBar removeFromSuperview];
+//    [UIView animateWithDuration:0.33 animations:^{
+//        _uiv_leftBar.alpha = 0.0;
+//    }];
+//    [_uiv_leftBar removeFromSuperview];
     if (open == NO) {
-        [_uiv_leftBar removeFromSuperview];
+//        [_uiv_leftBar removeFromSuperview];
         _uiv_closedMenuContainer.frame = CGRectMake(-41.0, (768-36)/2, 41.0, 38);
         [_uil_cellName removeFromSuperview]; 
     }
@@ -398,15 +439,15 @@ static float kClosedMenu_W = 40.0;
         _uiv_closedMenuContainer.frame = CGRectMake(-41.0, _uiv_collapseContainer.frame.origin.y, 41.0, _uiv_collapseContainer.frame.size.height);
         switch (index) {
             case 0:
-                [_uiv_leftBar setBackgroundColor:[UIColor redColor]];
+//                [_uiv_leftBar setBackgroundColor:[UIColor redColor]];
                 [self initCellNameLabel:test];
                 break;
             case 1:
-                [_uiv_leftBar setBackgroundColor:[UIColor greenColor]];
+//                [_uiv_leftBar setBackgroundColor:[UIColor greenColor]];
                 [self initCellNameLabel:test];
                 break;
             case 2:
-                [_uiv_leftBar setBackgroundColor:[UIColor yellowColor]];
+//                [_uiv_leftBar setBackgroundColor:[UIColor yellowColor]];
                 [self initCellNameLabel:test];
                 break;
                 
@@ -416,24 +457,24 @@ static float kClosedMenu_W = 40.0;
         }
         
         
-        _uiv_leftBar.frame = CGRectMake(0.0, kCCHeaderHeight+index*kCCHeaderHeight, 4.0, 0);
-        [_uiv_collapseContainer insertSubview:_uiv_leftBar aboveSubview:theCollapseClick];
-        _uiv_leftBar.alpha = 0.0;
-        [UIView animateWithDuration:0.68 animations:^{
-            _uiv_leftBar.alpha = 1.0;
-            
-            if (isCity && (index != 2)) {
-                _uiv_leftBar.frame = CGRectMake(0.0, kCCHeaderHeight+index*kCCHeaderHeight, 4.0, kCCHeaderHeight+150);
-            }
-           else if (isCity == NO)
-            {
-                _uiv_leftBar.frame = CGRectMake(0.0, kCCHeaderHeight+index*kCCHeaderHeight, 4.0, kCCHeaderHeight+150);
-            }
-            else
-            {
-                _uiv_leftBar.frame = CGRectMake(0.0, kCCHeaderHeight+index*kCCHeaderHeight, 4.0, kCCHeaderHeight+47);
-            }
-        }];
+//        _uiv_leftBar.frame = CGRectMake(0.0, kCCHeaderHeight+index*kCCHeaderHeight, 4.0, 0);
+//        [_uiv_collapseContainer insertSubview:_uiv_leftBar aboveSubview:theCollapseClick];
+//        _uiv_leftBar.alpha = 0.0;
+//        [UIView animateWithDuration:0.68 animations:^{
+//            _uiv_leftBar.alpha = 1.0;
+//            
+//            if (isCity && (index != 2)) {
+//                _uiv_leftBar.frame = CGRectMake(0.0, kCCHeaderHeight+index*kCCHeaderHeight, 4.0, kCCHeaderHeight+150);
+//            }
+//           else if (isCity == NO)
+//            {
+//                _uiv_leftBar.frame = CGRectMake(0.0, kCCHeaderHeight+index*kCCHeaderHeight, 4.0, kCCHeaderHeight+150);
+//            }
+//            else
+//            {
+//                _uiv_leftBar.frame = CGRectMake(0.0, kCCHeaderHeight+index*kCCHeaderHeight, 4.0, kCCHeaderHeight+47);
+//            }
+//        }];
     }
 }
 @end

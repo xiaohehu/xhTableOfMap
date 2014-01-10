@@ -38,6 +38,8 @@
 		821FF388187EF10200197F88 /* DINEngschriftStd.otf in Resources */ = {isa = PBXBuildFile; fileRef = 821FF387187EF10200197F88 /* DINEngschriftStd.otf */; };
 		82220C401840111400B5E66E /* hotspotLis.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82220C3F1840111400B5E66E /* hotspotLis.plist */; };
 		823BC94F18565C83008E1EF7 /* tableData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 823BC94E18565C83008E1EF7 /* tableData.plist */; };
+		82533F5A18803B7800C4F606 /* xhCollapseContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82533F5918803B7800C4F606 /* xhCollapseContentCell.m */; };
+		82533F5C18803CDC00C4F606 /* xhCollapseContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82533F5B18803CDC00C4F606 /* xhCollapseContentCell.xib */; };
 		826CEBD518451E95009D7101 /* map_menu_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 826CEBD318451E95009D7101 /* map_menu_close.png */; };
 		826CEBD618451E95009D7101 /* map_menu_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 826CEBD418451E95009D7101 /* map_menu_close@2x.png */; };
 		826CEBDD1845367E009D7101 /* publicT.png in Resources */ = {isa = PBXBuildFile; fileRef = 826CEBDB1845367E009D7101 /* publicT.png */; };
@@ -100,6 +102,9 @@
 		821FF387187EF10200197F88 /* DINEngschriftStd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DINEngschriftStd.otf; sourceTree = "<group>"; };
 		82220C3F1840111400B5E66E /* hotspotLis.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hotspotLis.plist; sourceTree = "<group>"; };
 		823BC94E18565C83008E1EF7 /* tableData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tableData.plist; sourceTree = "<group>"; };
+		82533F5818803B7800C4F606 /* xhCollapseContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xhCollapseContentCell.h; sourceTree = "<group>"; };
+		82533F5918803B7800C4F606 /* xhCollapseContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xhCollapseContentCell.m; sourceTree = "<group>"; };
+		82533F5B18803CDC00C4F606 /* xhCollapseContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = xhCollapseContentCell.xib; sourceTree = "<group>"; };
 		826CEBD318451E95009D7101 /* map_menu_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_menu_close.png; sourceTree = "<group>"; };
 		826CEBD418451E95009D7101 /* map_menu_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_menu_close@2x.png"; sourceTree = "<group>"; };
 		826CEBDB1845367E009D7101 /* publicT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = publicT.png; sourceTree = "<group>"; };
@@ -182,6 +187,9 @@
 				82092A31183FFD03003080C4 /* diningTableViewController.h */,
 				82092A32183FFD03003080C4 /* diningTableViewController.m */,
 				82092A33183FFD03003080C4 /* diningTableViewController.xib */,
+				82533F5818803B7800C4F606 /* xhCollapseContentCell.h */,
+				82533F5918803B7800C4F606 /* xhCollapseContentCell.m */,
+				82533F5B18803CDC00C4F606 /* xhCollapseContentCell.xib */,
 				82092A2A183FDAFE003080C4 /* hotspotList.plist */,
 				82220C3F1840111400B5E66E /* hotspotLis.plist */,
 				823BC94E18565C83008E1EF7 /* tableData.plist */,
@@ -324,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				826CEBD518451E95009D7101 /* map_menu_close.png in Resources */,
+				82533F5C18803CDC00C4F606 /* xhCollapseContentCell.xib in Resources */,
 				826CEBDD1845367E009D7101 /* publicT.png in Resources */,
 				82092A30183FFCEF003080C4 /* hotelTableViewController.xib in Resources */,
 				820929EF183F9F1D003080C4 /* Images.xcassets in Resources */,
@@ -371,6 +380,7 @@
 				82092A21183FB300003080C4 /* CollapseClick.m in Sources */,
 				82092A22183FB300003080C4 /* CollapseClickArrow.m in Sources */,
 				82092A34183FFD03003080C4 /* diningTableViewController.m in Sources */,
+				82533F5A18803B7800C4F606 /* xhCollapseContentCell.m in Sources */,
 				82092A23183FB300003080C4 /* CollapseClickCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

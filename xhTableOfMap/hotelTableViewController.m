@@ -7,34 +7,40 @@
 //
 
 #import "hotelTableViewController.h"
-
+#import "xhCollapseContentCell.h"
 @interface hotelTableViewController ()
-@property (nonatomic, strong) NSMutableArray *arr_tableData;
+
 @end
 
 @implementation hotelTableViewController
-
+@synthesize str_plistName;
+@synthesize arr_tableData=_arr_tableData;
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
 
+
     }
     return self;
 }
-
+-(void)setStr_plistName:(NSString *)plistName
+{
+    str_plistName = plistName;
+    NSLog(@"The name of plist is %@", str_plistName);
+    NSLog(@"The name 2 of plist is %@", plistName);
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSString *path = [[NSBundle mainBundle] pathForResource:
-                      @"hotspotList" ofType:@"plist"];
-    _arr_tableData = [[NSMutableArray alloc] initWithContentsOfFile:path];
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    NSLog(@"The total account is %i", (int)[_arr_tableData count]);
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,7 +48,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)viewWillAppear:(BOOL)animated
+{
+//    NSString *path = [[NSBundle mainBundle] pathForResource:
+//                      str_plistName ofType:@"plist"];
+//    _arr_tableData = [[NSMutableArray alloc] initWithContentsOfFile:path];
+//    [self reloadInputViews];
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -62,15 +74,32 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//    }
+    xhCollapseContentCell *cell = (xhCollapseContentCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"xhCollapseContentCell" owner:self options:nil];
+        for(id currentObject in topLevelObjects)
+        {
+            if([currentObject isKindOfClass:[xhCollapseContentCell class]])
+            {
+                cell = (xhCollapseContentCell *)currentObject;
+                break;
+            }
+        }
+        
     }
-    
     // Configure the cell...
-    NSString *str_cellText = [_arr_tableData objectAtIndex:indexPath.row];
-    cell.textLabel.text = str_cellText;
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:14.0];
+//    NSString *str_cellText = [_arr_tableData objectAtIndex:indexPath.row];
+//    cell. = str_cellText;
+//    cell.textLabel.font = [UIFont boldSystemFontOfSize:14.0];
+//    return cell;
+    cell.uil_cellNum.text = [NSString stringWithFormat:@"%i.", (int)indexPath.row];
+    cell.uil_cellName.text = @"StarBucks";
+    [cell.uiv_cellSideBar setBackgroundColor:[UIColor redColor]];
+    cell.frame =  CGRectMake(10.0, 0.0, 100, 26);
     return cell;
 }
 

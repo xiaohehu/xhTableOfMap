@@ -213,6 +213,8 @@
     self.superview.frame = CGRectMake(self.frame.origin.x, (768-newSize.height)/2, newSize.width, newSize.height);
         self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, newSize.height - kCCHeaderHeight);
     }];
+    cell.TitleSideBar.alpha = 1.0;
+    cell.TitleSideBar.backgroundColor = [CollapseClickDelegate colorForTitleSideBarAtIndex:index];
 }
 
 -(void)closeCellResize
@@ -292,7 +294,12 @@
 //            cell.BackgroundColor=[UIColor colorWithWhite:0.4 alpha:1.0];
             cell.TitleView.backgroundColor = [self normalCellColor];
 //            cell.TitleLabel.alpha = 1.0;
+//            cell.TitleSideBar.alpha = 0.0;
+
         }];
+        
+        CollapseClickCell *theCell = [self.dataArray objectAtIndex:index];
+        theCell.TitleSideBar.alpha = 0.0;
     }
 }
 
