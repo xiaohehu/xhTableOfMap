@@ -42,8 +42,8 @@
 		82533F5C18803CDC00C4F606 /* xhCollapseContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82533F5B18803CDC00C4F606 /* xhCollapseContentCell.xib */; };
 		826CEBD518451E95009D7101 /* map_menu_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 826CEBD318451E95009D7101 /* map_menu_close.png */; };
 		826CEBD618451E95009D7101 /* map_menu_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 826CEBD418451E95009D7101 /* map_menu_close@2x.png */; };
-		826CEBDD1845367E009D7101 /* publicT.png in Resources */ = {isa = PBXBuildFile; fileRef = 826CEBDB1845367E009D7101 /* publicT.png */; };
-		826CEBDE1845367E009D7101 /* publicT@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 826CEBDC1845367E009D7101 /* publicT@2x.png */; };
+		8274FDB51884554400D7F3EA /* public_transit.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8274FDB31884554400D7F3EA /* public_transit.jpg */; };
+		8274FDB61884554400D7F3EA /* public_transit@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8274FDB41884554400D7F3EA /* public_transit@2x.jpg */; };
 		82A3E722184F8AB800EC7CC1 /* map_menu_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A3E720184F8AB800EC7CC1 /* map_menu_open.png */; };
 		82A3E723184F8AB800EC7CC1 /* map_menu_opne@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A3E721184F8AB800EC7CC1 /* map_menu_opne@2x.png */; };
 		82A6B087187DE463008B02A6 /* open_btn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 82A6B085187DE463008B02A6 /* open_btn.jpg */; };
@@ -107,8 +107,8 @@
 		82533F5B18803CDC00C4F606 /* xhCollapseContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = xhCollapseContentCell.xib; sourceTree = "<group>"; };
 		826CEBD318451E95009D7101 /* map_menu_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_menu_close.png; sourceTree = "<group>"; };
 		826CEBD418451E95009D7101 /* map_menu_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_menu_close@2x.png"; sourceTree = "<group>"; };
-		826CEBDB1845367E009D7101 /* publicT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = publicT.png; sourceTree = "<group>"; };
-		826CEBDC1845367E009D7101 /* publicT@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "publicT@2x.png"; sourceTree = "<group>"; };
+		8274FDB31884554400D7F3EA /* public_transit.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = public_transit.jpg; sourceTree = "<group>"; };
+		8274FDB41884554400D7F3EA /* public_transit@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "public_transit@2x.jpg"; sourceTree = "<group>"; };
 		82A3E720184F8AB800EC7CC1 /* map_menu_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_menu_open.png; sourceTree = "<group>"; };
 		82A3E721184F8AB800EC7CC1 /* map_menu_opne@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_menu_opne@2x.png"; sourceTree = "<group>"; };
 		82A6B085187DE463008B02A6 /* open_btn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = open_btn.jpg; sourceTree = "<group>"; };
@@ -197,8 +197,8 @@
 				826CEBD418451E95009D7101 /* map_menu_close@2x.png */,
 				82A3E720184F8AB800EC7CC1 /* map_menu_open.png */,
 				82A3E721184F8AB800EC7CC1 /* map_menu_opne@2x.png */,
-				826CEBDB1845367E009D7101 /* publicT.png */,
-				826CEBDC1845367E009D7101 /* publicT@2x.png */,
+				8274FDB31884554400D7F3EA /* public_transit.jpg */,
+				8274FDB41884554400D7F3EA /* public_transit@2x.jpg */,
 				820A155F187DA22D00725899 /* location_bg.jpg */,
 				820A1560187DA22D00725899 /* location_bg@2x.jpg */,
 				82A6B085187DE463008B02A6 /* open_btn.jpg */,
@@ -333,7 +333,6 @@
 			files = (
 				826CEBD518451E95009D7101 /* map_menu_close.png in Resources */,
 				82533F5C18803CDC00C4F606 /* xhCollapseContentCell.xib in Resources */,
-				826CEBDD1845367E009D7101 /* publicT.png in Resources */,
 				82092A30183FFCEF003080C4 /* hotelTableViewController.xib in Resources */,
 				820929EF183F9F1D003080C4 /* Images.xcassets in Resources */,
 				82092A0C183FA419003080C4 /* ViewController.xib in Resources */,
@@ -344,13 +343,14 @@
 				82A6B088187DE463008B02A6 /* open_btn@2x.jpg in Resources */,
 				821FF386187EEF1D00197F88 /* DINPro-CondBlack.otf in Resources */,
 				82092A2B183FDAFE003080C4 /* hotspotList.plist in Resources */,
+				8274FDB61884554400D7F3EA /* public_transit@2x.jpg in Resources */,
 				82A6B087187DE463008B02A6 /* open_btn.jpg in Resources */,
-				826CEBDE1845367E009D7101 /* publicT@2x.png in Resources */,
 				82220C401840111400B5E66E /* hotspotLis.plist in Resources */,
 				820A1562187DA22D00725899 /* location_bg@2x.jpg in Resources */,
 				823BC94F18565C83008E1EF7 /* tableData.plist in Resources */,
 				82A3E722184F8AB800EC7CC1 /* map_menu_open.png in Resources */,
 				821FF388187EF10200197F88 /* DINEngschriftStd.otf in Resources */,
+				8274FDB51884554400D7F3EA /* public_transit.jpg in Resources */,
 				82092A35183FFD03003080C4 /* diningTableViewController.xib in Resources */,
 				82092A24183FB300003080C4 /* CollapseClickCell.xib in Resources */,
 				82A3E723184F8AB800EC7CC1 /* map_menu_opne@2x.png in Resources */,

@@ -14,10 +14,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CpZ-iK-0hY" userLabel="Label - Name Label">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CpZ-iK-0hY" userLabel="Label - Name Label">
                         <rect key="frame" x="44" y="0.0" width="276" height="65"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aqk-Js-2MA" userLabel="View - Side Bar">
@@ -37,6 +37,7 @@
                     <constraint firstItem="CpZ-iK-0hY" firstAttribute="top" secondItem="yDj-Ab-sz1" secondAttribute="top" id="6Bg-5s-gHi"/>
                     <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="dnF-VH-Ob6" secondAttribute="bottom" id="KhO-a8-VJX"/>
                     <constraint firstItem="Aqk-Js-2MA" firstAttribute="leading" secondItem="yDj-Ab-sz1" secondAttribute="leading" id="OV0-Uv-9g7"/>
+                    <constraint firstAttribute="bottom" secondItem="CpZ-iK-0hY" secondAttribute="bottom" id="RB8-jH-B9l"/>
                     <constraint firstItem="dnF-VH-Ob6" firstAttribute="top" secondItem="yDj-Ab-sz1" secondAttribute="top" id="ebI-F1-JJd"/>
                     <constraint firstItem="CpZ-iK-0hY" firstAttribute="leading" secondItem="yDj-Ab-sz1" secondAttribute="leading" constant="44" id="jHn-ZE-a0e"/>
                     <constraint firstItem="dnF-VH-Ob6" firstAttribute="leading" secondItem="yDj-Ab-sz1" secondAttribute="leading" constant="20" id="pnO-JG-SNp"/>

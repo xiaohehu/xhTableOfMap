@@ -8,12 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol hotelViewControllerDelegate
-
--(NSString *)getPlistName;
-@end
-
-@interface hotelTableViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate, hotelViewControllerDelegate>
+@interface hotelTableViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *arr_tableData;
 @property (nonatomic, strong) NSString *str_plistName;
